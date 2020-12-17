@@ -14,8 +14,9 @@ public class MyMvcConfig implements WebMvcConfigurer
     public void addInterceptors(InterceptorRegistry registry)
     {
         //springboot已经做好了静态资源映射,不用处理静态资源
+        //几天后失效,需要添加避免静态资源被拦截
         registry.addInterceptor(new LoginHandler()).addPathPatterns("/**")
                 //这里的路径需要加上"/"
-                .excludePathPatterns("/index","/","/login");
+                .excludePathPatterns("/index","/","/login","/asserts/**");
     }
 }
